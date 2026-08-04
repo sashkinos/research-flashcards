@@ -1,0 +1,17 @@
+{
+  "name": "Research Flash Cards",
+  "short_name": "Research Cards",
+  "description": "A searchable, offline clinical research flash-card library.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#eef4f4",
+  "theme_color": "#087f83",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

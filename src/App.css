@@ -25,7 +25,8 @@ button { -webkit-tap-highlight-color: transparent; }
 
 .app {
   width: min(100%, 520px);
-  min-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
   margin: 0 auto;
   padding: max(22px, env(safe-area-inset-top)) 18px max(24px, env(safe-area-inset-bottom));
 }
@@ -150,6 +151,8 @@ button { -webkit-tap-highlight-color: transparent; }
   padding: 24px 2px 18px;
   overflow-y: auto;
   overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 .cardContent h2, .qrContent h2 {
   margin: 0;
@@ -358,4 +361,11 @@ button { -webkit-tap-highlight-color: transparent; }
   50% {
     transform: translateY(3px);
   }
+}
+.cardFront {
+  overscroll-behavior: contain;
+}
+
+.cardArea {
+  overscroll-behavior: contain;
 }

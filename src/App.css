@@ -152,10 +152,12 @@ button { -webkit-tap-highlight-color: transparent; }
   line-height: 1.03;
   letter-spacing: -0.04em;
 }
-.journal { margin: 8px 0 22px; color: var(--muted); font-weight: 700; line-height: 1.4; }
-.cardContent ul { margin: 0; padding-left: 1.25rem; }
-.cardContent li { margin-bottom: 15px; padding-left: 5px; line-height: 1.48; }
-.cardContent li::marker { color: var(--teal); }
+.journal {
+  margin: 6px 0 22px;
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.4;
+}
 
 .flipButton {
   width: 100%;
@@ -233,4 +235,70 @@ button { -webkit-tap-highlight-color: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   .flipCardInner { transition: none; }
+}
+.studySubtitle {
+  margin: 4px 0 8px;
+  color: var(--teal-dark);
+  font-size: clamp(1.35rem, 6vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+/* Utility/reference cards */
+.staticCard {
+  min-height: min(590px, calc(100dvh - 245px));
+}
+
+.resourceCard {
+  position: relative;
+}
+
+.resourceContent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 2px 18px;
+  text-align: center;
+}
+
+.resourceContent h2 {
+  margin: 0;
+  color: var(--teal-dark);
+  font-size: clamp(1.8rem, 8vw, 2.55rem);
+  line-height: 1.03;
+  letter-spacing: -0.04em;
+}
+
+.resourceContent .journal {
+  margin: 2px 0 8px;
+}
+
+.linkOnlyContent {
+  min-height: 300px;
+}
+
+.resourceHint {
+  margin: 0;
+  max-width: 30ch;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.resourceLinkButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  padding: 13px 18px;
+  border-radius: 15px;
+  background: var(--teal);
+  color: white;
+  font-weight: 850;
+  text-align: center;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }

@@ -302,3 +302,27 @@ button { -webkit-tap-highlight-color: transparent; }
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
+/* Smaller layout for IPG Size Comparison */
+.resourceCard .qrFrame {
+  width: min(68vw, 260px);
+  padding: 8px;
+  border-radius: 14px;
+}
+
+.resourceCard .resourceContent {
+  gap: 10px;
+  padding: 14px 2px 10px;
+}
+
+.resourceCard .resourceContent h2 {
+  font-size: clamp(1.55rem, 7vw, 2.15rem);
+}
+
+.resourceCard .resourceHint {
+  font-size: 0.9rem;
+}
+
+.resourceCard .resourceLinkButton {
+  min-height: 48px;
+  padding: 11px 16px;
+}

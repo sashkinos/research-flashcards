@@ -1,7 +1,7 @@
 {
-  "name": "Research Flash Cards",
-  "short_name": "Research Cards",
-  "description": "A searchable, offline clinical research flash-card library.",
+  "name": "SCS Data",
+  "short_name": "SCS Data",
+  "description": "A searchable, offline clinical research SCS library.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#eef4f4",

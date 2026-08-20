@@ -3,7 +3,7 @@ function Header({ favoriteOnly, onToggleFavoriteOnly, favoriteCount }) {
     <header className="header">
       <div>
         <p className="eyebrow">Clinical Research Library</p>
-        <h1>Research Flash Cards</h1>
+        <h1>SCS Data</h1>
       </div>
       <button
         type="button"

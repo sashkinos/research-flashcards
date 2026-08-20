@@ -1,9 +1,31 @@
+import { useEffect, useRef, useState } from 'react'
+
 function FlashCard({ study, isFavorite, onToggleFavorite, isFlipped, onFlip }) {
   if (!study) return null
 
   const isStudy = study.type === 'study' || !study.type
   const isQrLink = study.type === 'qr-link'
   const isLinkOnly = study.type === 'link'
+
+  const contentRef = useRef(null)
+  const [needsScroll, setNeedsScroll] = useState(false)
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      const el = contentRef.current
+      if (!el) return
+
+      setNeedsScroll(el.scrollHeight > el.clientHeight + 2)
+    }
+
+    checkOverflow()
+
+    window.addEventListener('resize', checkOverflow)
+
+    return () => {
+      window.removeEventListener('resize', checkOverflow)
+    }
+  }, [study, isFlipped])
 
   if (isQrLink) {
     return (
@@ -12,6 +34,7 @@ function FlashCard({ study, isFavorite, onToggleFavorite, isFlipped, onFlip }) {
           <article className="cardFace resourceCard">
             <div className="cardTopRow">
               <span className="sideLabel">Reference resource</span>
+
               <button
                 type="button"
                 className={`favoriteButton ${isFavorite ? 'selected' : ''}`}
@@ -63,6 +86,7 @@ function FlashCard({ study, isFavorite, onToggleFavorite, isFlipped, onFlip }) {
           <article className="cardFace resourceCard">
             <div className="cardTopRow">
               <span className="sideLabel">Reference resource</span>
+
               <button
                 type="button"
                 className={`favoriteButton ${isFavorite ? 'selected' : ''}`}
@@ -107,9 +131,11 @@ function FlashCard({ study, isFavorite, onToggleFavorite, isFlipped, onFlip }) {
     <section className="cardArea" aria-live="polite">
       <div className={`flipCard ${isFlipped ? 'isFlipped' : ''}`}>
         <div className="flipCardInner">
+
           <article className="cardFace cardFront">
             <div className="cardTopRow">
               <span className="sideLabel">Study summary</span>
+
               <button
                 type="button"
                 className={`favoriteButton ${isFavorite ? 'selected' : ''}`}
@@ -120,7 +146,7 @@ function FlashCard({ study, isFavorite, onToggleFavorite, isFlipped, onFlip }) {
               </button>
             </div>
 
-            <div className="cardContent">
+            <div className="cardContent" ref={contentRef}>
               <h2>{study.title}</h2>
 
               {study.subtitle && (
@@ -138,6 +164,13 @@ function FlashCard({ study, isFavorite, onToggleFavorite, isFlipped, onFlip }) {
               </ul>
             </div>
 
+            {needsScroll && (
+              <div className="scrollHint">
+                <span>Scroll for more</span>
+                <span className="scrollArrow" aria-hidden="true">↓</span>
+              </div>
+            )}
+
             <button type="button" className="flipButton" onClick={onFlip}>
               Show QR code <span aria-hidden="true">↻</span>
             </button>
@@ -146,6 +179,7 @@ function FlashCard({ study, isFavorite, onToggleFavorite, isFlipped, onFlip }) {
           <article className="cardFace cardBack">
             <div className="cardTopRow">
               <span className="sideLabel">Scan study</span>
+
               <button
                 type="button"
                 className={`favoriteButton ${isFavorite ? 'selected' : ''}`}
@@ -178,6 +212,7 @@ function FlashCard({ study, isFavorite, onToggleFavorite, isFlipped, onFlip }) {
               Back to summary <span aria-hidden="true">↻</span>
             </button>
           </article>
+
         </div>
       </div>
     </section>
